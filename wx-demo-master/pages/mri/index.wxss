@@ -1,0 +1,370 @@
+/* pages/mri/index.wxss */
+.dialog-list {
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F1F2;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+}
+
+.dialog-item {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.dialog-item-left {
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 30px;
+}
+
+.dialog-item-right {
+    flex-direction: row-reverse;
+    margin-left: 30px;
+}
+
+.dialog-avatar {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.dialog-content {
+    position: relative;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.25;
+    color: #757980;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+/*.dialog-content-fold {
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}*/
+
+.dialog-content-masker {
+    color: #4A90E2;
+    text-align: center;
+    vertical-align: bottom;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 111;
+    border: 0;
+    background: linear-gradient(0, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.dialog-title {
+    color: #393C40;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.dialog-content-left {
+    margin-left: 10px;
+}
+
+.dialog-content-left::before {
+    position: absolute;
+    display: block;
+    left: -8px;
+    top: 50%;
+    margin-top: -4px;
+    content: ' ';
+    border: 4px solid #FFFFFF;
+    border-color: transparent #FFFFFF transparent transparent;
+}
+
+.dialog-content-right {
+    margin-right: 10px;
+    background-color: #9EC4F0;
+}
+
+.dialog-content-right::after {
+    position: absolute;
+    display: block;
+    right: -8px;
+    top: 50%;
+    margin-top: -4px;
+    content: ' ';
+    border: 4px solid #9EC4F0;
+    border-color: transparent transparent transparent #9EC4F0;
+}
+
+button[type="primary"].new-quesiton-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    background-color: #FFFFFF;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+button[type="primary"].new-quesiton-button.button-hover {
+    background-color: transparent;
+}
+
+button[type="primary"].new-quesiton-button::after {
+    display: none;
+}
+
+.new-quesiton-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.que-modal-title {
+    text-align: center;
+}
+
+.que-modal-content {
+    margin: 10px auto 20px auto;
+}
+
+.que-modal-input {
+    background-color: #F0F1F2;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.dialog-options {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dialog-radio {
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.dialog-checkbox {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.dialog-tail-text {
+    display: block;
+    font-size: 12px;
+    line-height: 18px;
+    color: #B4B8BF;
+}
+
+.disease-circles {
+    margin: 12px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.disease-circle {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background-color: #D8D8D8;
+    background-image: linear-gradient(to right, transparent 50%, #9EC4F0 0);
+    position: relative;
+}
+
+.disease-circle-pie {
+    content: '';
+    display: block;
+    margin-left: 50%;
+    height: 100%;
+    border-radius: 0 100% 100% 0 / 50%;
+    transform-origin: left;
+    transform: rotate(0turn);
+    background-color: #D8D8D8;
+    transition: all 2s ease-in-out;
+}
+
+.disease-text {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 66px;
+    height: 66px;
+    padding: 2px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+@keyframes spin {
+    to { transform: rotate(0.5turn); }
+}
+
+.disease-tips {
+    border-top: 0.5px solid #F0F1F2;
+    background-color: #FAFAFA;
+    padding: 0 15px 20px 15px;
+}
+
+.disease-tab {
+    display: block;
+    width: 94px;
+    height: 1px;
+    margin-top: -1px;
+    background-color: #4A90E2;
+    position: relative;
+}
+
+.disease-tab-0 {
+    left: 0;
+}
+
+.disease-tab-1 {
+    left: 36%;
+}
+
+.disease-tab-2 {
+    left: 72%;
+}
+
+.disease-tab::before {
+    position: absolute;
+    left: 50%;
+    top: -16px;
+    margin-left: -8px;
+    content: '';
+    display: block;
+    border: 8px solid #4A90E2;
+    border-color: transparent transparent #4A90E2 transparent;
+}
+
+.disease-tab::after {
+    position: absolute;
+    left: 50%;
+    top: -15px;
+    margin-left: -8px;
+    content: '';
+    display: block;
+    border: 8px solid #FAFAFA;
+    border-color: transparent transparent #FAFAFA transparent;
+}
+
+.disease-tip-title {
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    color: #757980;
+    margin: 20px 0 15px 0;
+}
+
+.disease-tip-content {
+    line-height: 20px;
+}
+
+.dialog-main-btn {
+    border: 0.5px solid #4A90E2;
+    color: #4A90E2;
+    background: #FFFFFF;
+    font-size: 14px;
+    display: inline-flex;
+    margin: 6px 0;
+}
+
+button.dialog-main-btn::after {
+    display: none;
+}
+
+button[disabled].dialog-main-btn {
+    border: 0.5px solid #B4B8BF;
+}
+
+.disease-info-intro {
+    font-size: 14px;
+}
+
+.disease-info-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.disease-info-item {
+    width: 30%;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.disease-info-title {
+    font-size: 12px;
+}
+
+.disease-info-img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+}
+
+.dialog-info {
+    border-top: 0.5px solid #F0F1F2;
+    line-height: 1.5;
+}
+
+.detail-info-title {
+    display: block;
+    border-left: 4px solid #4A90E2;
+    padding-left: 10px;
+    margin: 15px 0 10px 0;
+}
+
+.detail-info-content {
+    line-height: 1.5;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: break-all;
+}
+
+.detail-food {
+    display: block;
+}
+
+.suit-food {
+    color: #6EC3B4;
+}
+
+.unsuit-food {
+    color: #E95260;
+}
+
+.detail-symptom-btn,
+.detail-examine-btn {
+    margin-right: 10px;
+}
+
+.dialog-symptom-title {
+    display: block;
+    border-left: 4px solid #4A90E2;
+    padding-left: 10px;
+}

@@ -1,0 +1,113 @@
+<!--pages/mri/index.wxml-->
+<scroll-view class="dialog-list" scroll-y="true" scroll-top="{{scrollTop}}">
+  <view class="dialog-item {{dialogItem.type === '0' ? 'dialog-item-right' : 'dialog-item-left'}}" wx:for="{{dialogList}}" wx:for-index="diaIndex" wx:key="index" wx:for-item="dialogItem">
+    <image class="dialog-avatar" src="{{dialogItem.logo}}"></image>
+    <view class="dialog-content {{dialogFoldList[diaIndex] ? 'dialog-content-fold' : 'dialog-content-unfold'}} {{dialogItem.type === '0' ? 'dialog-content-right' : 'dialog-content-left'}}">
+      <view hidden="true" class="dialog-content-masker">{{dialogFoldList[diaIndex] ? '展开' : '收起'}}</view>
+      <text class="dialog-title">{{dialogItem.title}}</text>
+      <radio-group wx:if="{{dialogItem.type === '1002'}}" class="dialog-options" data-option-obj="{{dialogItem.option}}" data-dialog-type="{{dialogItem.type}}" data-dialog-index="{{diaIndex}}" bindchange="radioChange">
+        <label class="dialog-radio" wx:for="{{dialogItem.option}}" wx:for-index="radioKey" wx:key="{{radioKey}}" wx:for-item="radioItem">
+          <radio value="{{radioKey}}" color="#4A90E2" disabled="{{disabledList[diaIndex]}}" />{{radioItem}}
+        </label>
+      </radio-group>
+      <view wx:if="{{dialogItem.type === '1003'}}">
+        <checkbox-group class="dialog-options" bindchange="checkboxChange">
+          <label class="dialog-checkbox" wx:for="{{dialogItem.option}}" wx:for-index="checkKey" wx:key="{{checkKey}}"  wx:for-item="checkItem">
+            <checkbox value="{{checkKey}}" color="#4A90E2" disabled="{{disabledList[diaIndex]}}" />{{checkItem}}
+          </label>
+        </checkbox-group>
+        <button class="dialog-main-btn" bindtap="bindCheckboxOK" disabled="{{checkList.length === 0 || disabledList[diaIndex]}}" data-option-obj="{{dialogItem.option}}" data-dialog-type="{{dialogItem.type}}" data-dialog-index="{{diaIndex}}">确认</button>
+      </view>
+      <view wx:if="{{dialogItem.type === '1007'}}" class="dialog-result">
+        <text class="dialog-tail-text">{{dialogItem.tailText}}</text>
+        <view class="dialog-disease-wrap">
+          <view class="disease-circles">
+            <view class="disease-circle" wx:for="{{dialogItem.result}}" wx:for-index="disIndex" wx:key="{{disIndex}}" wx:for-item="diseaseItem" bindtap="bindDiseaseClick" data-disease-key="{{disIndex}}" data-disease-name="{{diseaseItem.diseaseName}}">
+              <view class="disease-circle-pie" style="transform: rotate({{diseaseItem.percent > 0.5 ? diseaseItem.percent - 0.5 : diseaseItem.percent}}turn);background-color: {{diseaseItem.percent > 0.5 ? '#9EC4F0;' : '#D8D8D8;'}}"></view>
+              <text class="disease-text">{{diseaseItem.diseaseName}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{dialogItem.type === '1009'}}" class="dialog-option">
+        <button class="dialog-main-btn" bindtap="bindInfoOK" disabled="{{disabledList[diaIndex]}}" data-dialog-type="{{dialogItem.type}}" data-dialog-index="{{diaIndex}}">确认</button>
+      </view>
+      <view wx:if="{{dialogItem.type === '2000'}}" class="dialog-disease-info">
+        <view class="disease-info-main">
+          <text class="disease-info-intro">{{dialogItem.diseaseInfo.diseaseName}}常见于{{dialogItem.diseaseInfo.epidemiology}}</text>
+        </view>
+        <view class="disease-info-list">
+          <view class="disease-info-item" bindtap="bindInfoClick" data-info-key="auditRelatedSymptom" data-dialog-index="{{diaIndex}}">
+            <image class="disease-info-img" src="../../static/img/brain.png"></image>
+            <text class="disease-info-title">伴随症状</text>
+          </view>
+          <view class="disease-info-item" bindtap="bindInfoClick" data-info-key="food" data-dialog-index="{{diaIndex}}">
+            <image class="disease-info-img" src="../../static/img/water.png"></image>
+            <text class="disease-info-title">饮食禁忌</text>
+          </view>
+          <view class="disease-info-item" bindtap="bindInfoClick" data-info-key="symptom" data-dialog-index="{{diaIndex}}">
+            <image class="disease-info-img" src="../../static/img/ga.png"></image>
+            <text class="disease-info-title">相关疾病</text>
+          </view>
+          <view class="disease-info-item" bindtap="bindInfoClick" data-info-key="departmentList" data-dialog-index="{{diaIndex}}">
+            <image class="disease-info-img" src="../../static/img/doctor.png"></image>
+            <text class="disease-info-title">就诊科室</text>
+          </view>
+          <view class="disease-info-item" bindtap="bindInfoClick" data-info-key="price" data-dialog-index="{{diaIndex}}">
+            <image class="disease-info-img" src="../../static/img/money.png"></image>
+            <text class="disease-info-title">治疗费用</text>
+          </view>
+          <view class="disease-info-item" bindtap="bindInfoClick" data-info-key="examine" data-dialog-index="{{diaIndex}}">
+            <image class="disease-info-img" src="../../static/img/device.png"></image>
+            <text class="disease-info-title">相关检查</text>
+          </view>
+        </view>
+        <view class="disease-info-detail">
+          <view wx:if="{{showDiaDetail[diaIndex].auditRelatedSymptom}}" class="dialog-info">
+            <text class="detail-info-title">伴随症状</text>
+            <text>{{dialogItem.diseaseInfo.auditRelatedSymptom || '暂无信息'}}</text>
+          </view>
+          <view wx:if="{{showDiaDetail[diaIndex].departmentList}}" class="dialog-info">
+            <text class="detail-info-title">就诊科室</text>
+            <text>{{dialogItem.diseaseInfo.departmentList || '暂无信息'}}</text>
+          </view>
+          <view wx:if="{{showDiaDetail[diaIndex].price}}" class="dialog-info">
+            <text class="detail-info-title">治疗费用</text>
+            <text>{{dialogItem.diseaseInfo.price || '暂无信息'}}</text>
+          </view>
+          <view wx:if="{{showDiaDetail[diaIndex].symptom}}" class="dialog-info">
+            <text class="detail-info-title">相关疾病</text>
+            <button class="detail-symptom-btn dialog-main-btn" bindtap="bindSymptomClick" data-symptom="{{sItem}}" data-symptom-key="{{sKey}}" wx:for="{{dialogItem.diseaseInfo.symptom}}" wx:for-index="sKey" wx:key="{{sKey}}" wx:for-item="sItem">{{sKey}}</button>
+          </view>
+          <view wx:if="{{showDiaDetail[diaIndex].examine}}" class="dialog-info">
+            <text class="detail-info-title">相关检查</text>
+            <button class="detail-examine-btn dialog-main-btn" bindtap="bindExamineClick" data-examine="{{eItem}}" data-examine-key="{{eKey}}" wx:for="{{dialogItem.diseaseInfo.examine}}" wx:for-index="eKey" wx:key="{{eKey}}" wx:for-item="eItem">{{eKey}}</button>
+          </view>
+          <view wx:if="{{showDiaDetail[diaIndex].food}}" class="dialog-info">
+            <text class="detail-info-title">饮食禁忌</text>
+            <text class="detail-food detail-info-content"><text class="suit-food">宜吃：</text>{{dialogItem.diseaseInfo.suit_food || '暂无信息'}}</text>
+            <text class="detail-food detail-info-content"><text class="unsuit-food">不宜吃：</text>{{dialogItem.diseaseInfo.unsuit_food || '暂无信息'}}</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{dialogItem.type === '2001'}}" class="dialog-symptom">
+        <view class="dialog-symptom-item" wx:for="{{dialogItem.symptom}}" wx:for-index="siKey" wx:key="{{siKey}}" wx:for-item="siItem">
+          <text class="detail-info-title" wx:if="{{siKey !== 'intro'}}">{{siKey}}</text>
+          <text class="detail-info-content">{{siItem}}</text>
+        </view>
+      </view>
+      <view wx:if="{{dialogItem.type === '2002'}}" class="dialog-examine">
+        <text class="detail-info-content">{{dialogItem.examine.intro}}</text>
+      </view>
+    </view>
+  </view>
+  <button class="new-quesiton-button" type="primary" bindtap="newQuestion">
+    <image class="new-quesiton-icon" src="../../static/img/new-que.png"></image>
+  </button>
+  <modal class="que-modal" hidden="{{hideQueModal}}" bindconfirm="queModalConfirm" bindcancel="queModalCancel" confirmColor="#4A90E2" cancelColor="#B4B8BF">
+    <text class="que-modal-title">开始新问题</text>
+    <view class="que-modal-content">
+      <input class="que-modal-input" placeholder="请输入你的问题，如头疼" value="{{queValue}}" bindinput="bindQueInput" />
+    </view>
+  </modal>
+</scroll-view>

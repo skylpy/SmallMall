@@ -1,0 +1,11 @@
+{
+  "pages":[
+    "pages/mri/index"
+  ],
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4A90E2",
+    "navigationBarTitleText": "智能小e",
+    "navigationBarTextStyle": "white"
+  }
+}
