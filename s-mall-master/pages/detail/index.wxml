@@ -1,0 +1,12 @@
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <view wx:for="{{goodsPicsInfo}}">
+        <swiper-item >
+            <image src="{{item.picurl}}"></image>
+        </swiper-item>
+    </view>
+</swiper>
+
+<view class="info">
+    <view>{{goodsInfo.title}}</view>
+    <view>{{goodsInfo.reason}}</view>
+</view>

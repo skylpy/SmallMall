@@ -1,0 +1,63 @@
+.list_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    font-size:12px;
+    
+}
+.list_item{
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    margin:5px 0;
+    padding:5px 0;
+}
+.goods{
+    fload:left;
+    height:90px;
+    width:30%;
+}
+.right{
+    float:right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:70%;
+    height:90px;   
+}
+.right view{
+    margin-top:5px;
+}
+.text{
+    display: block;
+    padding-right:15px;
+    margin:5px 0px 0px;
+    line-height:18px;
+    font-size:14px;
+    color:#999;
+}
+.price{
+    color: orangered;
+    font-weight: bold;
+    margin:0 5px;
+}
+.tag{
+    color:#fff;
+    background: orangered;
+    position: relative;
+    margin:0 5px;
+    padding:2px 5px;
+}
+.tag::before{
+    content: "";
+    border:5px solid transparent;
+    border-right-color:orangered;
+    position: absolute;
+    left:-10px;
+    top:3px;
+}
+.market{
+    margin:0 5px;
+    text-decoration: line-through;
+    color:#999;
+}

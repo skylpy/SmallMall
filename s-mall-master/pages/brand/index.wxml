@@ -1,0 +1,23 @@
+
+<!--pages/first/first.wxml-->
+
+<view class="brand_list"  wx:for="{{brandList.brand}}">
+
+    
+      <navigator url="../list/list?brand={{item.id}}&typeid={{item.typeid}}">
+        <image src="{{item.pic}}" class="pic"></image>
+        <view class="right_cont">
+          <image src="{{item.logo}}"></image>
+          <text class="name" >{{item.chinesename}}</text>
+          <text class="brief">{{item.brief}}</text>
+          <text class="price" style="color:red">${{item.minprice}}/每件</text>
+        </view>
+      </navigator>
+      
+  
+
+</view>
+<loading hidden="{{hidden}}">
+    加载中...
+</loading>
+  

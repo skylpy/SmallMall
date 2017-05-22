@@ -1,0 +1,15 @@
+page{
+    background: #eee;
+}
+.cart{
+    width:100%;
+    text-align: center;
+    font-size:18px;
+}
+.cart image{
+    display: block;
+    margin:0 auto 10px;
+}
+.cart text{
+    display: block;
+}

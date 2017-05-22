@@ -1,0 +1,16 @@
+<view class="list_box">
+  <view class="list_item" wx:for="{{list}}">
+    <navigator url="../detail/index?id={{item.id}}">
+      <image class="goods" src="{{item.goodspics}}"></image>
+      <view class="right">
+        <text class="text">日本直采{{item.bigname}}</text>
+        <text class="text" style="color:#333">{{item.title}}</text>
+        <view>
+          <text class="price">${{item.ourprice}}</text>
+          <text class="tag">8折</text>
+          <text class="market">{{item.marketprice}}.00</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

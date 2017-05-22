@@ -1,0 +1,30 @@
+/* pages/first/first.wxss */
+.brand_list{
+    background: #fff;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    margin-bottom:15px;
+    height:120px;
+}
+.pic{
+    float:left;
+    width:50%;
+    height:120px;
+}
+.right_cont{
+    width:50%;
+    float: right;
+}
+.right_cont image{
+    display: block;
+    height:46px;
+    width:90px;
+    margin:5px auto 0;
+}
+.right_cont text{
+    display: block;
+    text-align: center;
+    font-size:14px;
+    line-height:22px;
+    color:#666;
+}

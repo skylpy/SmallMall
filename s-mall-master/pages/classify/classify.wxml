@@ -1,0 +1,39 @@
+<view class="box">
+
+  <view class="left_list">
+    <block wx:for="{{left}}">
+      <view class="list_item {{id == item.id ? 'active' : ''}}" data-index="{{index}}" data-id="{{item.id}}" bindtap="click">
+        {{item.tree.desc}}
+      </view>
+    </block>
+  </view>
+
+
+  <view class="right_cont">
+    <block wx:if="{{right[ind].tree.nodes[1].tree.nodes}}">
+      <block wx:for="{{right[ind].tree.nodes[1].tree.nodes}}">
+        <navigator url="../list/list?brand={{item.tree.id}}&typeid={{right[ind].id}}">
+          <view class="right_item">
+            <view wx:if="{{item.tree.logo}}">
+              <image class="img" src="{{item.tree.logo}}"></image>
+            </view>
+            <view wx:else>
+              <image class="img" src="http://temp.im/50x30"></image>
+            </view>
+            <view class="text" wx:if="{{item.tree.desc}}">
+              {{item.tree.desc}}
+            </view>
+            <view class="text" wx:else>
+              {{item.tree.desc2}}
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </block>
+
+    <block wx:else>
+      <view class="mes">暂无数据</view>
+    </block>
+  </view>
+
+</view>
